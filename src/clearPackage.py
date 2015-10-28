@@ -11,6 +11,9 @@ def clearWebexPackage(self):
         @rtype: boolean
         """
         result=False
-        subprocess.Popen('rd /s /q C:\ProgramData\Webex,C:\Users\Administrator\AppData\LocalLow\Webex,C:\Users\Administrator\AppData\Local\Webex,C:\Users\Administrator\AppData\Local\Webex',shell=True)
+#         subprocess.Popen('rd /s /q C:\ProgramData\Webex,C:\Users\Administrator\AppData\LocalLow\Webex,C:\Users\Administrator\AppData\Local\Webex,C:\Users\Administrator\AppData\Local\Webex',shell=True)
+        subprocess.Popen('rd /s /q C:\Users\Administrator\AppData\Local\Webex',shell=True)
+        subprocess.Popen('rd /s /q C:\ProgramData\Webex,C:\Users\Administrator\AppData\LocalLow\Webex',shell=True) 
+        subprocess.Popen('rd /s /q C:\ProgramData\Webex,',shell=True)
         if Popen.wait() == 0:
             result=True
