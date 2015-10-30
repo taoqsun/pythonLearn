@@ -16,40 +16,40 @@ def clearWebexPackage():
         @return: operation result
         @rtype: boolean
         """
-#         resultlist=[]
-        
+        result=False
 #         if isWindows():
-#         p1=subprocess.Popen('rd /s /q C:\Users\Administrator\AppData\Local\Webex',shell=True)
-#         ret1 = p1.wait()
-#         resultlist.append(ret1)
-#         p2=subprocess.Popen('rd /s /q C:\Users\Administrator\AppData\LocalLow\Webex',shell=True) 
-#         ret2 = p2.wait()
-#         resultlist.append(ret2)
-#         p3=subprocess.Popen('rd /s /q C:\ProgramData\Webex',shell=True)
-#         ret3 = p3.wait()
-#         resultlist.append(ret3)
-#         p4=subprocess.Popen('rd /s /q \"C:\Windows\Downloaded Program Files\"',shell=True)
-#         ret4 = p4.wait()
-#         resultlist.append(ret4)
-#         p5=subprocess.Popen('rd /s /q C:\Users\Administrator\AppData\Roaming\Mozilla\plugins',shell=True)
-#         ret5 = p5.wait()
-#         resultlist.append(ret5)
-#         for result in resultlist:
-#             if result in [0,2]:
-#                 return True
-#             else:
-#                 return False
-        
-        resultlist=[]   
-        p6=subprocess.Popen('rm -rf ~/Library/Application\ Support/WebEx\ Folder',shell=True) 
-        ret6 = p6.wait()
+        resultlist=[]
+        p1=subprocess.Popen('rd /s /q C:\Users\Administrator\AppData\Local\Webex',shell=True)
+        ret1 = p1.wait()
+        resultlist.append(ret1)
+        p2=subprocess.Popen('rd /s /q C:\Users\Administrator\AppData\LocalLow\Webex',shell=True) 
+        ret2 = p2.wait()
+        resultlist.append(ret2)
+        p3=subprocess.Popen('rd /s /q C:\ProgramData\Webex',shell=True)
+        ret3 = p3.wait()
+        resultlist.append(ret3)
+        p4=subprocess.Popen('rd /s /q \"C:\Windows\Downloaded Program Files\"',shell=True)
+        ret4 = p4.wait()
+        resultlist.append(ret4)
+        p5=subprocess.Popen('rd /s /q C:\Users\Administrator\AppData\Roaming\Mozilla\plugins',shell=True)
+        ret5 = p5.wait()
+        resultlist.append(ret5)
         for resultT in resultlist:
-            print resultT
             if resultT in [0,2]:
                 result = True
             else:
                 result = False
-        print result
+#         elif isMacOSX():
+#             resultlist=[]   
+#             p6=subprocess.Popen('rm -rf ~/Library/Application\ Support/WebEx\ Folder',shell=True) 
+#             ret6 = p6.wait()
+#             resultlist.append(ret6)
+#             for resultT in resultlist:
+#                 if resultT in [0]:
+#                     result = True
+#                 else:
+#                     result = False
+        print "clear result==",result
         return result
 
 def repeatFile(filePath=r'C:\ProgramData\Webex\Webex\T31_MC'):
@@ -123,6 +123,25 @@ def createIni(filePath='C:\ProgramData\Webex\Webex\T31_MC'):
             pass
         finally:
             file_handle.close()
-clearWebexPackage()
+def killProcess():
+    resultlist = []
+#     if self.serviceType.lower() == "mc" or self.serviceType.lower() == "ec" or self.serviceType.lower() == "tc" :
+    p1=subprocess.Popen("taskkill /f /im atmgr.exe",shell=True)
+    ret1 = p1.wait()
+    resultlist.append(ret1)
+    for resultT in resultlist:
+        print 'resultT===',resultT
+        if resultT in [0]:
+            return True
+#     elif self.serviceType.lower() == "sc":
+#         p2=subprocess.Popen("taskkill /f /im atscmgr.exe",shell=True)
+#         ret2 = p2.wait()
+#         resultlist.append(ret2)
+#         for resultT in resultlist:
+#             if resultT in [0]:
+#                 return True
+    return False
+# clearWebexPackage()
 # repeatFile()
 # createIni()
+# killProcess()
