@@ -140,6 +140,24 @@ def killProcess():
 #         for resultT in resultlist:
 #             if resultT in [0]:
 #                 return True
+    p = subprocess.Popen(['ps', '-A'], stdout=subprocess.PIPE)
+    out, err = p.communicate()
+    
+    if self.serviceType.lower() == "mc":
+        processName = "Meeting Center"
+    elif self.serviceType.lower() == "ec":
+        processName = "Event Center"
+    elif self.serviceType.lower() == "tc":
+        processName = "Training Center"
+    elif self.serviceType.lower() == "sc":
+        processName = "Session Center"
+    for line in out.splitlines():
+#                     print line
+        if processName in line:
+            pid = int(line.split(None, 1)[0])
+            os.kill(pid, signal.SIGKILL)
+    ret2=p.wait()
+    print ret2
     return False
 # clearWebexPackage()
 # repeatFile()
