@@ -195,3 +195,14 @@ def downloadAndInstall(downloaddUrl='',isInstall=True):
 # createIni()
 # killProcess()
 downloadAndInstall()
+
+fileName=[]
+                if getOSName() != '':
+                    fileName.append(getOSName())
+                if args.serviceName != None:
+                    fileName.append(args.serviceName)
+                if args.browserName != None:
+                    fileName.append(args.browserName)
+                if args.downloadType != None:
+                    fileName.append(args.downloadType)
+                report_file = fileTemp + os.sep +'_'.join(fileName)+'.xml'
