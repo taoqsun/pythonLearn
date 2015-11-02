@@ -8,6 +8,7 @@ from shutil import copyfile
 import os
 import subprocess
 import time
+import urllib
 
 def clearWebexPackage():
         """clear webex package
@@ -140,26 +141,57 @@ def killProcess():
 #         for resultT in resultlist:
 #             if resultT in [0]:
 #                 return True
-    p = subprocess.Popen(['ps', '-A'], stdout=subprocess.PIPE)
-    out, err = p.communicate()
-    
-    if self.serviceType.lower() == "mc":
-        processName = "Meeting Center"
-    elif self.serviceType.lower() == "ec":
-        processName = "Event Center"
-    elif self.serviceType.lower() == "tc":
-        processName = "Training Center"
-    elif self.serviceType.lower() == "sc":
-        processName = "Session Center"
-    for line in out.splitlines():
-#                     print line
-        if processName in line:
-            pid = int(line.split(None, 1)[0])
-            os.kill(pid, signal.SIGKILL)
-    ret2=p.wait()
-    print ret2
+#     p = subprocess.Popen(['ps', '-A'], stdout=subprocess.PIPE)
+#     out, err = p.communicate()
+#     
+#     if self.serviceType.lower() == "mc":
+#         processName = "Meeting Center"
+#     elif self.serviceType.lower() == "ec":
+#         processName = "Event Center"
+#     elif self.serviceType.lower() == "tc":
+#         processName = "Training Center"
+#     elif self.serviceType.lower() == "sc":
+#         processName = "Session Center"
+#     for line in out.splitlines():
+# #                     print line
+#         if processName in line:
+#             pid = int(line.split(None, 1)[0])
+#             os.kill(pid, signal.SIGKILL)
+#     ret2=p.wait()
+#     print ret2
     return False
+def downloadAndInstall(downloaddUrl='',isInstall=True):
+    downloaddUrl="http://t1wdta03.qa.webex.com/client/T31L/Cisco_WebEx_Add-On.exe11"
+    downloadStatus=True
+#     if isWindows():
+#     savePath="C:\\Cisco_WebEx_Add-On.exe"
+#     try:
+#         urllib.urlretrieve(downloaddUrl,savePath)
+#     except IOError,e:
+#         downloadStatus=False
+#     if isMacOSX():
+#         pass
+    
+#     if downloadStatus:
+#         if isInstall:
+#             if isWindows():
+#     ret1=''
+#     try:
+#         p1=subprocess.Popen("C:\\Cisco_WebEx_Add-On.exe")
+#         ret1=p1.wait()
+#     except Exception,e:
+#         print 'eee=',e
+#     print 'dddd=',ret1
+#             if isMacOSX():
+#                 pass
+#             
+#     print "lll===",downloadStatus
+    print 'path===',os.path.dirname(__file__)
+    print 'path2===',os.path.split(os.path.dirname(__file__))[0]
+    print 'path3===',os.path.dirname(os.path.realpath(__file__))
+    return downloadStatus
 # clearWebexPackage()
 # repeatFile()
 # createIni()
 # killProcess()
+downloadAndInstall()
