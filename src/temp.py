@@ -9,6 +9,7 @@ import os
 import subprocess
 import time
 import urllib
+from array import array
 
 def clearWebexPackage():
         """clear webex package
@@ -194,15 +195,50 @@ def downloadAndInstall(downloaddUrl='',isInstall=True):
 # repeatFile()
 # createIni()
 # killProcess()
-downloadAndInstall()
+# downloadAndInstall()
+# 
+# fileName=[]
+# if getOSName() != '':
+#     fileName.append(getOSName())
+# if args.serviceName != None:
+#     fileName.append(args.serviceName)
+# if args.browserName != None:
+#     fileName.append(args.browserName)
+# if args.downloadType != None:
+#     fileName.append(args.downloadType)
+# report_file = fileTemp + os.sep +'_'.join(fileName)+'.xml'
 
-fileName=[]
-                if getOSName() != '':
-                    fileName.append(getOSName())
-                if args.serviceName != None:
-                    fileName.append(args.serviceName)
-                if args.browserName != None:
-                    fileName.append(args.browserName)
-                if args.downloadType != None:
-                    fileName.append(args.downloadType)
-                report_file = fileTemp + os.sep +'_'.join(fileName)+'.xml'
+# import os
+# 
+# def getpid(s):
+# 
+#     im='"IMAGENAME eq %s"'%s
+#     cmd="tasklist /NH /FI %s"%im
+#     cmd = '''for /f \"tokens=2 delims=,"'''+''' %F'''+" in ('tasklist /nh /fi %s"%im+" /fo csv') do @echo %~F"
+# #     for /f "tokens=2 delims=," %F in ('tasklist /nh /fi "imagename eq BitTorrent.exe" /fo csv') do @echo %~F
+#     s=os.popen(cmd).read()
+#     print s
+#     list11=s.split("\n")
+#     print list11
+#     print filter(None, list11)
+#     print len(s)
+#     print s[0:5]
+# 
+# print getpid('iexple.exe')
+windowsList=[0,1,2,3,4,5]
+getBrowserPID=["1","2",""]
+# c=0
+# for window1 in windowsList:
+#     for pid1 in getBrowserPID:
+#         print "888===",window1
+#         print "999===",pid1
+#         if window1 == pid1:
+#             oBrowser = window1
+#             break
+#         c=c+1
+#         print c
+print filter(None, getBrowserPID)
+print [x+x for x in windowsList if x%2 == 0]
+print [windowsList[x] for x in range(len(windowsList))]
+for a,b in zip(windowsList,getBrowserPID):
+    print (str(a)+b)
