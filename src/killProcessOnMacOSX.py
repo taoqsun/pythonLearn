@@ -49,3 +49,5 @@ def checkProcessAndKill(process_name):
                 
     except Exception,e:
         print e
+        
+checkProcessAndKill('atmgr.exe')

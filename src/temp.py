@@ -18,41 +18,66 @@ def clearWebexPackage():
         @return: operation result
         @rtype: boolean
         """
-        result=False
-#         if isWindows():
         resultlist=[]
+        print 'delete Local\Webex directory:'
         p1=subprocess.Popen('rd /s /q C:\Users\Administrator\AppData\Local\Webex',shell=True)
         ret1 = p1.wait()
+        print ret1
+        p1.kill()
         resultlist.append(ret1)
+        
+        print 'delete LocalLow\Webex directory:'
         p2=subprocess.Popen('rd /s /q C:\Users\Administrator\AppData\LocalLow\Webex',shell=True) 
         ret2 = p2.wait()
+        print ret2
+        p2.kill()
         resultlist.append(ret2)
+       
+        print 'delete ProgramData\Webex directory:'
         p3=subprocess.Popen('rd /s /q C:\ProgramData\Webex',shell=True)
         ret3 = p3.wait()
+        print ret3
+        p3.kill()
         resultlist.append(ret3)
-        p4=subprocess.Popen('rd /s /q \"C:\Windows\Downloaded Program Files\"',shell=True)
+        
+        print 'delete Downloaded Program Files\ieatgpc.dll file:'
+        p4=subprocess.Popen('del /f /s /q /a \"C:\Windows\Downloaded Program Files\ieatgpc.dll"',shell=True)
         ret4 = p4.wait()
+        print ret4
+        p4.kill()
         resultlist.append(ret4)
-        p5=subprocess.Popen('rd /s /q C:\Users\Administrator\AppData\Roaming\Mozilla\plugins',shell=True)
+        
+        print 'delete Mozilla\plugins\npatgpc.dll file:'
+        p5=subprocess.Popen('del /f /s /q /a C:\Users\Administrator\AppData\Roaming\Mozilla\plugins\npatgpc.dll',shell=True)
         ret5 = p5.wait()
+        print ret5
+        p5.kill()
         resultlist.append(ret5)
+        
+        print 'delete Application\Plugins\npatgpc.dll file:'
+        p6=subprocess.Popen('del /f /s /q /a C:\Program Files\Google\Chrome\Application\Plugins\npatgpc.dll',shell=True)
+        ret6 = p6.wait()
+        print ret6
+        p6.kill()
+        resultlist.append(ret6)
+        
+        print 'delete Mozilla Firefox\browser\plugins\npatgpc.dl file:'
+        p7=subprocess.Popen('del /f /s /q /a C:\Program Files\Mozilla Firefox\browser\plugins\npatgpc.dll',shell=True)
+        ret7 = p7.wait()
+        print ret7
+        p7.kill()
+        resultlist.append(ret7)
+        
+        print 'delete Local\WebEx\ChromeNativeHost\ciscowebexstart.exe file:'                    
+        p8=subprocess.Popen('del /f /s /q /a C:\Users\Administrator\AppData\Local\WebEx\ChromeNativeHost\ciscowebexstart.exe',shell=True)
+        ret8 = p8.wait()
+        print ret8
+        p8.kill()
+        resultlist.append(ret8)
+        
         for resultT in resultlist:
-            if resultT in [0,2]:
+            if resultT in [0,1,2]:
                 result = True
-            else:
-                result = False
-#         elif isMacOSX():
-#             resultlist=[]   
-#             p6=subprocess.Popen('rm -rf ~/Library/Application\ Support/WebEx\ Folder',shell=True) 
-#             ret6 = p6.wait()
-#             resultlist.append(ret6)
-#             for resultT in resultlist:
-#                 if resultT in [0]:
-#                     result = True
-#                 else:
-#                     result = False
-        print "clear result==",result
-        return result
 
 def repeatFile(filePath=r'C:\ProgramData\Webex\Webex\T31_MC'):
         """replace GPC File and so on
@@ -191,7 +216,7 @@ def downloadAndInstall(downloaddUrl='',isInstall=True):
     print 'path2===',os.path.split(os.path.dirname(__file__))[0]
     print 'path3===',os.path.dirname(os.path.realpath(__file__))
     return downloadStatus
-# clearWebexPackage()
+clearWebexPackage()
 # repeatFile()
 # createIni()
 # killProcess()
@@ -225,8 +250,12 @@ def downloadAndInstall(downloaddUrl='',isInstall=True):
 #     print s[0:5]
 # 
 # print getpid('iexple.exe')
-windowsList=[0,1,2,3,4,5]
-getBrowserPID=["1","2",""]
+# windowsList=[0,1,2,3,4,5]
+# getBrowserPID=["1","2",""]
+# windowsList2=[]
+# tryTimes = 0
+# installButtonList = []
+# oBrowser=[1,3,5]
 # c=0
 # for window1 in windowsList:
 #     for pid1 in getBrowserPID:
@@ -237,8 +266,18 @@ getBrowserPID=["1","2",""]
 #             break
 #         c=c+1
 #         print c
-print filter(None, getBrowserPID)
-print [x+x for x in windowsList if x%2 == 0]
-print [windowsList[x] for x in range(len(windowsList))]
-for a,b in zip(windowsList,getBrowserPID):
-    print (str(a)+b)
+# print filter(None, getBrowserPID)
+# print [x+x for x in windowsList if x%2 == 0]
+# print [windowsList[x] for x in range(len(windowsList))]
+# for a,b in zip(windowsList,getBrowserPID):
+#     print (str(a)+b)
+
+# while len(installButtonList) == 0 and tryTimes <= 30:
+#     for pyWinBrowser in oBrowser:
+#         if pyWinBrowser % 2 == 0:
+#             installButtonList.append(pyWinBrowser)
+#         if 0 != len(installButtonList):
+#             break
+#     time.sleep(1)
+#     tryTimes = tryTimes + 1
+# print installButtonList

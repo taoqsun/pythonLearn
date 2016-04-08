@@ -7,7 +7,7 @@ import os
 
 def readOrWriteMeetingCountFile(meetingCount,isRead = True):
     file_handle=None
-    filePath = r'C:'
+    filePath = os.path.dirname(os.path.abspath(__file__))
     fileName=filePath + os.sep +'meetingCount.ini'
     if not isRead:
         try:         
