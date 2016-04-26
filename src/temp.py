@@ -216,7 +216,11 @@ def downloadAndInstall(downloaddUrl='',isInstall=True):
     print 'path2===',os.path.split(os.path.dirname(__file__))[0]
     print 'path3===',os.path.dirname(os.path.realpath(__file__))
     return downloadStatus
-clearWebexPackage()
+#  clearWebexPackage()
+if 2>2 :
+    print "eee"
+else:
+    print "33"
 # repeatFile()
 # createIni()
 # killProcess()
