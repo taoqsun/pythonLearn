@@ -47,7 +47,7 @@ def runSTAFCmd(stafCmd,timeOutValue = 30):
             time.sleep(1)
             timeOut = timeOut + 1
         if timeOut > timeOutValue :
-            print "runSTAFCmd : \"" + stafCmd +"\" time out ...."
+            cprint( "runSTAFCmd : \"" + stafCmd +"\" time out ....")
         return ret
     except Exception,e:
         print  "error message:  ",e
