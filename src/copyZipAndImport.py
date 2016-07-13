@@ -16,6 +16,9 @@ def getCurrentScriptPath():
         curPath = os.path.dirname(curPath)
     return curPath
 
+def cprint(log):
+    print time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())) + " -- " + str(log)
+
 def __runMBJavaAPI(infoFile):
     os.environ["Path"] = os.environ["Path"] + "C:\client_mb_job"
     try:
