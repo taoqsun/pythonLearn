@@ -10,7 +10,15 @@ import subprocess
 import time
 import urllib
 from array import array
-
+import datetime,time
+import types
+from lib2to3.fixer_util import String
+import random
+import urllib2
+import json
+import math
+def cprint(log):
+    print time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())) + " -- " + str(log)
 def clearWebexPackage():
         """clear webex package
         @param filePath: service path on windows
@@ -217,10 +225,78 @@ def downloadAndInstall(downloaddUrl='',isInstall=True):
     print 'path3===',os.path.dirname(os.path.realpath(__file__))
     return downloadStatus
 #  clearWebexPackage()
-if 2>2 :
-    print "eee"
-else:
-    print "33"
+
+# print type(str(datetime.datetime.now())) 
+# print 300 / 600
+# print 0 / 600
+# print 300 % 600 
+# print 700 / 600
+# print 600 / 600
+# print 700 % 600  
+
+# howToRun(91)
+from datetime import datetime
+data_object = datetime.strptime('19:34:00', '%H:%M:%S')
+data_object2 = datetime.strptime('19:35:00', '%H:%M:%S')
+# print (data_object - data_object2).seconds
+win_at_Least = random.randint(0,10)
+mac_at_Least = random.randint(0,10)
+# print   win_at_Least,mac_at_Least 
+
+tempList = [2,3]
+# print tempList
+# del tempList[:]
+# print tempList
+
+# print testCC()
+# print range(3)
+class urllibRequest(urllib2.Request):
+    def __init__(self,method,*args, **kwargs):
+        self._method = method
+        urllib2.Request.__init__(self,*args,**kwargs)
+
+    def get_method(self):
+        return self._method
+# __requestURL = "http://taconsole.qa.webex.com/taconsole/service/machine/"
+# req = urllibRequest('GET',url=__requestURL + '%s' % ("10.225.23.55"))
+# 
+# u = urllib2.urlopen(req)
+# creationResp = json.loads(u.read())
+# print creationResp
+# u.close() 
+# print ' ceil 1 =>',math.ceil(2.3)
+# print math.ceil(2.6) 
+# print math.ceil(2)
+# print int(math.ceil(2.6))
+# from collections import namedtuple
+# 
+# RequiredMachineCount = namedtuple('RequiredMachineCount', ['win_at_least','win_at_best','mac_at_least','mac_at_best'], rename = True)
+# print type(RequiredMachineCount)
+# print isinstance(RequiredMachineCount,type)
+# dictTemp = {"1":"a","2":"b","3":4}
+# for c,d in dictTemp.iteritems():
+#     print c,d
+def howToWait(totalWaitTime,sizeList = [600,60,5,1]):
+    loopList = []
+    for indexTemp in range(len(sizeList)):
+        loopTimes = totalWaitTime / sizeList[indexTemp]
+        if loopTimes != 0:
+            loopList.append(loopTimes)
+            totalWaitTime = totalWaitTime - (loopTimes * sizeList[indexTemp]) 
+            continue
+        else:
+            loopList.append(0)
+    cprint( str(loopList) )
+    for indexLoopList in range(len(loopList)):
+        indexT = 0
+        if loopList[indexLoopList] == 0:
+            continue
+        for indexT in range(loopList[indexLoopList]):
+            cprint("the " + str(indexT+1)+" times , to wait time :" + str(sizeList[indexLoopList]) + "s ...... " )
+            time.sleep(sizeList[indexLoopList])
+howToWait(10)
+cprint(str(range(2)) )     
+# _howToWait(30)
 # repeatFile()
 # createIni()
 # killProcess()
