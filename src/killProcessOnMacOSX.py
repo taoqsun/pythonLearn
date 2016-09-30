@@ -49,5 +49,28 @@ def checkProcessAndKill(process_name):
                 
     except Exception,e:
         print e
+def checkProcessAndKillOnwin(serviceType):
+    try:
+        if __iswindows__ :
+            toKillProccessList = ["IEDriverServer.exe","chromedriver.exe"]
+            resultlist = []
+            if serviceType.lower() == "mc" or serviceType.lower() == "ec" or serviceType.lower() == "tc" :
+                toKillProccessList.append("atmgr.exe")
+            elif serviceType.lower() == "sc":
+                toKillProccessList.append("atscmgr.exe")
+                toKillProccessList.append("OUTLOOK.EXE")
+            for processName in toKillProccessList:
+                p=subprocess.Popen(("taskkill /f /im " + processName),shell=True)
+                ret = p.wait()
+                print "process name %s ,result %s" %(processName,ret)
+                resultlist.append(ret)
+            for resultT in resultlist:
+                if resultT not in [0]:
+                    return False,'stop meeting fail'
+            return True,''
+                
+    except Exception,e:
+        print e
         
-checkProcessAndKill('atmgr.exe')
+# checkProcessAndKill('atmgr.exe')
+print checkProcessAndKillOnwin("mc")
