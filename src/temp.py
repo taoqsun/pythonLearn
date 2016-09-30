@@ -17,6 +17,8 @@ import random
 import urllib2
 import json
 import math
+import re
+
 def cprint(log):
     print time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())) + " -- " + str(log)
 def clearWebexPackage():
@@ -294,8 +296,11 @@ def howToWait(totalWaitTime,sizeList = [600,60,5,1]):
         for indexT in range(loopList[indexLoopList]):
             cprint("the " + str(indexT+1)+" times , to wait time :" + str(sizeList[indexLoopList]) + "s ...... " )
             time.sleep(sizeList[indexLoopList])
-howToWait(10)
-cprint(str(range(2)) )     
+# howToWait(10)
+# cprint(str(range(2)) )   
+# print math.ceil(0)  
+# print str(None)
+# print re.search(r'.git', "stringit")
 # _howToWait(30)
 # repeatFile()
 # createIni()
@@ -361,3 +366,35 @@ cprint(str(range(2)) )
 #     time.sleep(1)
 #     tryTimes = tryTimes + 1
 # print installButtonList
+# sorted(dictTemp.iteritems(),key=lambda dictTemp:dictTemp[1]["start_time"],reverse= False)
+
+listTemp = [['1',1],['2',2],['0',0]]
+print sorted(listTemp,key=lambda x:x[1],reverse= False)
+c = 1
+if c >=0 and c<=10:
+    print "dd"
+    
+launchCache  = [1,2,3]
+print "the scripts will to trigger : " + "\n".join(str(v) for v in launchCache)
+print launchCache
+for keyTemp in launchCache:
+    print "before == ",launchCache
+    launchCache.remove(keyTemp)
+    print "after == ",launchCache
+    print keyTemp
+#     print launchCache.index(keyTemp)
+    
+    
+print "none = ",str(None)   
+tempFF = [None,333,"tt"]
+print "qq =" , filter(None, tempFF)
+strCurTime = "16:34:05"
+startTimeValue = "16:34:00"
+print (datetime.strptime(startTimeValue,"%H:%M:%S") - datetime.strptime(strCurTime,"%H:%M:%S")).seconds
+
+if datetime.strptime(startTimeValue,"%H:%M:%S") < datetime.strptime(strCurTime,"%H:%M:%S"):
+    print "22"
+
+print os.path.join("c:","ggg","ff")
+# timeDef = (datetime.strptime(startTimeValue,"%H:%M:%S") - datetime.strptime(strCurTime,"%H:%M:%S")).seconds - 86400
+# print "==== ",timeDef 
