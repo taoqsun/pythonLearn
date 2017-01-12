@@ -396,5 +396,23 @@ if datetime.strptime(startTimeValue,"%H:%M:%S") < datetime.strptime(strCurTime,"
     print "22"
 
 print os.path.join("c:","ggg","ff")
+listRR = [1,2,3]
+print listRR[-1]
+
+
+globvar = 0
+print "before is ",globvar
+def set_globvar_to_one():
+    global globvar    # Needed to modify global copy of globvar
+    globvar = 1
+
+def print_globvar():
+    print "print_globvar() is ",globvar     # No need for global declaration to read value of globvar
+
+set_globvar_to_one()
+print_globvar()       # Prints 1
+
+print os.path.basename(os.getenv("appdata"))
+print os.path.dirname(os.getenv("appdata"))
 # timeDef = (datetime.strptime(startTimeValue,"%H:%M:%S") - datetime.strptime(strCurTime,"%H:%M:%S")).seconds - 86400
 # print "==== ",timeDef 
