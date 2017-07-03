@@ -20,3 +20,14 @@ print reDict
 
 # x = time.strptime(,'%H:%M:%S')
 print sorted(valueT,key=lambda x:time.strptime(x.win_at_least,'%H:%M:%S'))
+
+curDict = {1:"1",2:"2",-1:"-1"}
+curList = curDict.values()
+curInt = []
+for item in curDict.values():
+    curInt.append(int(item))
+print curInt
+print curInt.sort()
+print curInt
+print sorted(curDict.values())
+print sorted(curDict.keys())
