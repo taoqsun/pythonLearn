@@ -12,13 +12,13 @@ Created on Oct 15, 2015
 # for name in tree('C:\Users\XXX\Downloads\Test'):
 #     print name
     
-# alist = ['a1', 'a2', 'a3']
-# blist = ['1', '2', '3']
-#  
-# for a, b in zip(alist, blist):
-#     print a, b
+alist = ['a1', 'a2', 'a3']
+blist = ['1', '2', '3']
+  
+for a, b in zip(alist, blist):
+    print a, b
 
-
+print alist[:4],len(blist)
 # class decorator(object):
 #  
 #     def __init__(self, f):

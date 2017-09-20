@@ -31,3 +31,6 @@ print curInt.sort()
 print curInt
 print sorted(curDict.values())
 print sorted(curDict.keys())
+
+listTemp = [0,3,5,1,4]
+print sorted(listTemp)

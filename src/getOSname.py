@@ -8,3 +8,5 @@ print os.name
 import platform
 print platform.system()
 print platform.release()
+if os.path.getsize("C:\\1.txt") != 0:
+    print "you got it"
